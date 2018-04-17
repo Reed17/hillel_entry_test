@@ -14,8 +14,19 @@ import static java.util.stream.Collectors.joining;
 
 public class DistinctWordsService {
 
+    /*
+    * Path to file.
+    * */
     private String path;
+
+    /*
+    * File itself.
+    * */
     private File file;
+
+    /*
+    * Container with unique words.
+    * */
     private List<String> uniqueWordsContainer = new ArrayList<>();
 
     public DistinctWordsService(String path) {
@@ -24,6 +35,11 @@ public class DistinctWordsService {
         file = new File(path);
     }
 
+    /*
+    * Method read a file  and transform text into String.
+    *
+    * @return sb.toString(). Returns all file`s text.
+    * */
     public String readFile() {
         String line;
         StringBuilder sb = new StringBuilder();
@@ -37,6 +53,11 @@ public class DistinctWordsService {
         return sb.toString();
     }
 
+    /*
+    * Collect distinct words.
+    *
+    * @return finalString. Returns all distinct words in file.
+    * */
     public String collectDistinctWords() {
         String text = readFile();
         Pattern pattern = Pattern.compile("[\\W]+");
@@ -46,6 +67,11 @@ public class DistinctWordsService {
         return finalString;
     }
 
+    /*
+    * Makes simple ignoreCase filter.
+    *
+    * @return uniqueWordsContainer. Returns a container with words.
+    * */
     private List<String> getUniqueWords(String[] source) {
         for (int i = 0; i < source.length; i++) {
             if (!uniqueWordsContainer.contains(source[i].toLowerCase())) {
